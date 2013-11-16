@@ -25,6 +25,9 @@ end
 # profit.
 
 allresults.each do |project|
-  Project.create(:project_id => project["id"], :title => project["name"], :blurb => project["blurb"], :photo => project["photo"]["small"], :goal => project["goal"].to_i, :pledged => project["pledged"].to_i, :finish_date => project["deadline"], :backers_count => project["backers_count"].to_i, :url => project["urls"]["web"]["project"])
+  if Time.now < Time.at(project["deadline"])
+  Project.where(:project_id => project["id"], :title => project["name"], :blurb => project["blurb"], :photo => project["photo"]["small"], :goal => project["goal"].to_i, :pledged => project["pledged"].to_i, :finish_date => project["deadline"], :backers_count => project["backers_count"].to_i, :url => project["urls"]["web"]["project"]).first_or_create
+  end
+
 end
 

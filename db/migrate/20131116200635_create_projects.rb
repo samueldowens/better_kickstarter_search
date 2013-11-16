@@ -16,3 +16,14 @@ class CreateProjects < ActiveRecord::Migration
     end
   end
 end
+
+# title contains search param, 30pts
+# blurb contains search param, 10 pts
+# pledged/goal greater than .75 5 pts
+# between .5 and .75 2 pts 
+# backer count over 1000 4 pts
+# backer count over 500  3 pts
+# backer count over 250, 2 pts
+# backer count over 100, 1 pt
+
+
